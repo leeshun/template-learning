@@ -1,8 +1,9 @@
 package main
 
 import (
-	"os"
-	"text/template"
+	"fmt"
+
+	"github.com/leeshun/template-learning/util"
 )
 
 type pair struct {
@@ -11,16 +12,13 @@ type pair struct {
 }
 
 func main() {
-	tpl, err := template.ParseFiles("trim/trim.tpl")
-	if err != nil {
-		panic(err)
-	}
 	p := &pair{
 		First:  10,
 		Second: 2,
 	}
-	err = tpl.Execute(os.Stdout, p)
+	result, err := util.Execute("trim/trim.tpl", p)
 	if err != nil {
 		panic(err)
 	}
+	fmt.Printf("render result is \n%s\n", result)
 }
