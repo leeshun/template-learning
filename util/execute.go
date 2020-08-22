@@ -24,7 +24,7 @@ type Render struct {
 }
 
 func NewRender(fileName string) (*Render, error) {
-	tpl, err := template.ParseGlob(fileName)
+	tpl, err := template.ParseFiles(fileName)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create template render with cause %w", err)
 	}
